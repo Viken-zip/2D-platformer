@@ -5,28 +5,33 @@ export class collisionBlock {
     posY: number; 
     w: number;
     h: number;
+    type: string;
 
     constructor(posY: number, posX: number, w: number, h: number){
         this.posY = posY;
         this.posX = posX;
         this.w = w;
         this.h = h;
+        this.type = "Block";
     }
 }
 
 export function createBlocks(canvas: HTMLCanvasElement): void{
-    collisionBlocks = [
-        new collisionBlock(canvas.height - 10, 0, canvas.width, 10),
-        new collisionBlock(0, -10, 10, canvas.height),
-        new collisionBlock(0, canvas.width, 10, canvas.height)
-    ];
-    console.log(collisionBlocks)
+    newBlock(canvas.height - 10, 0, canvas.width, 10);
+    newBlock(0, -10, 10, canvas.height);
+    //new collisionBlock(0, canvas.width, 10, canvas.height)
+    
 }
 
-export function drawBlocks(ctx: any): void{
+export function newBlock(x: number, y: number, w: number, h: number){
+    const newBlock = new collisionBlock(x, y, w, h);
+    collisionBlocks.push(newBlock);
+}
+
+export function drawBlocks(ctx: any, camera: any): void{
     collisionBlocks.forEach(block => {
         ctx?.fillRect(
-            block.posX, 
+            block.posX - camera.x,
             block.posY,
             block.w,
             block.h

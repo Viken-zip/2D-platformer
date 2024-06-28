@@ -2,17 +2,9 @@ import { keys, keyStates } from "./keys"
 import { collisionBlock, collisionBlocks } from "./blocks";
 import { collisionX, collisionY } from "./collision";
 import { MurriSprite, getImage, updateAnimation } from "./animation";
+import { camera } from "../app";
 
 /** @type {CanvasRenderingContext2D} */
-/*const MurriSprite = new Image(); 
-const LeftMurriSprite = new Image();
-MurriSprite.src = './sprites/big_murri_sprite.png';
-const spriteImgSize = 20*5;
-let idleTime = 0;
-let spriteRow = 0;
-
-let frame = 0;
-let sitFrame = 0;*/
 
 export class cat {
     posX: number;
@@ -43,14 +35,6 @@ let vx: number = 0;
 export const Murri: cat = new cat(50, 50, 100, 100, 1);
 
 export function drawCat(ctx: any): void{
-    /*ctx?.beginPath();
-    ctx?.rect(
-        Murri.posX,
-        Murri.posY,
-        Murri.w,
-        Murri.h
-    );
-    ctx?.stroke();*/
     const Values = getImage();
     ctx?.drawImage(
         MurriSprite,
@@ -58,42 +42,11 @@ export function drawCat(ctx: any): void{
         Values[1],
         Values[2],
         Values[2],
-        Murri.posX,
+        Murri.posX - camera.x,
         Murri.posY,
         Murri.w,
         Murri.h
     );
-
-
-    /*if(idleTime >= 60*15){
-        spriteRow = 0;
-    } else {
-        spriteRow = 1;
-    }
-    ctx?.drawImage(
-        MurriSprite,
-        sitFrame*spriteImgSize,
-        spriteRow*spriteImgSize,
-        spriteImgSize,
-        spriteImgSize,
-        Murri.posX,
-        Murri.posY,
-        Murri.w,
-        Murri.h
-    );
-
-    if(frame/20 == 1){
-        console.log(sitFrame*20)
-        console.log(frame)
-        frame = 0;
-        if(sitFrame < 7){
-            sitFrame++;
-        } else {
-            sitFrame = 0;
-        }
-    }
-    frame++;
-    idleTime++;*/
 }
 
 export function moveCat(): void{

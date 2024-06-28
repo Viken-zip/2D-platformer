@@ -12,22 +12,33 @@ const canvasContainerDiv = <HTMLDivElement> document.getElementById('canvasConta
 canvas.width = canvasContainerDiv.offsetWidth;
 canvas.height = canvasContainerDiv.offsetHeight;
 
+const maxCamX: number = 1000;
+const blockSize: number = 25;
+export const camera: {x: number, y: number} = {
+    x: 0,
+    y: 0
+}
+
 export type callback = (block: collisionBlock, cat: cat) => void;
 
 function init(){
+    if(ctx){ ctx.imageSmoothingEnabled = false; }
     createBlocks(canvas);
     moveCat();
     drawCat(ctx);
-    drawBlocks(ctx);
+    drawBlocks(ctx, camera);
 }
 init();
 
 setInterval((): void=>{
     if(gameOn){
         
+        camera.x = Math.max(0, Murri.posX - canvas.width/2);
+        camera.x = Math.min(camera.x, maxCamX * blockSize + blockSize - canvas.width);
+
         ctx?.clearRect(0, 0, canvas.width, canvas.height);
         moveCat();
         drawCat(ctx);
-        drawBlocks(ctx);
+        drawBlocks(ctx, camera);
     }
 }, 1000/60);

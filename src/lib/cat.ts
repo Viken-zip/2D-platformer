@@ -1,12 +1,15 @@
 import { keys, keyStates } from "./keys"
-import { collisionBlock, collisionBlocks } from "./blocks";
+import { collisionBlock, blocks } from "./blocks/block/blocks";
 import { collisionX, collisionY } from "./collision";
 import { MurriSprite, getImage, updateAnimation } from "./animation";
 import { blockSize, camera } from "../app";
+import { goals } from "./blocks/goal/goals";
 
 /** @type {CanvasRenderingContext2D} */
 
 export const catSize: number = innerHeight/30;
+const objects = [blocks, goals];
+
 export class cat {
     posX: number;
     posY: number; 
@@ -25,15 +28,16 @@ export class cat {
 
 let gravity: number = 1;
 //let fallSpeed: number = 0;
-const maxGravity: number = 20;
-const maxSpeed: number = 10;
+const jumpPower: number = innerHeight/50;
+const maxGravity: number = innerHeight/70;
+const maxSpeed: number = innerHeight/100;
 
 let onGround: boolean = false;
 
 let vy: number = 0;
 let vx: number = 0;
 
-export const Murri: cat = new cat(50, 50, catSize, catSize, 1);
+export const Murri: cat = new cat(innerHeight/1.25, 50, catSize, catSize, 1);
 
 export function drawCat(ctx: any): void{
     const Values = getImage();
@@ -66,7 +70,7 @@ export function moveCat(): void{
     if( keyStates['w'] ){
         if(onGround){
             onGround = false;
-            vy -= 25;
+            vy -= jumpPower;
         }
     }
 
@@ -78,20 +82,28 @@ export function moveCat(): void{
         vy += maxGravity/16;
     }
 
-    collisionX(vx, Murri, collisionBlocks, collisionx);
-    collisionY(vy, Murri, collisionBlocks, collisiony);
+    collisionX(vx, Murri, objects, collisionx);
+    collisionY(vy, Murri, objects, collisiony);
 
     //console.log(vx);
     updateAnimation(vx, vy);
 }
 
-function collisiony(block: collisionBlock, cat: cat): void{
-    if(block.posY > cat.posY){
+function collisiony(tile: any, cat: cat): void{
+    if(tile.y > cat.posY){
         onGround = true;
     }
     vy = 0;
+
+    if(tile.type == 'goal'){
+        console.log('goal');
+    }
 }
 
-function collisionx(block: collisionBlock, cat: cat): void {
+function collisionx(tile: any, cat: cat): void {
     vx = 0;
+
+    if(tile.type == 'goal'){
+        console.log('goal')
+    }
 }

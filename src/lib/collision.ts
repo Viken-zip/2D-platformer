@@ -1,32 +1,39 @@
 import { callback } from "../app";
 import { cat } from "./cat";
-import { collisionBlock } from "./blocks";
+import { collisionBlock } from "./blocks/block/blocks";
 
-export function collisionY(vy: number, cat: cat, blocks: collisionBlock[], collisionCallback: callback){
+export function collisionY(vy: number, cat: cat, collisionObjects: any, collisionCallback: callback){
     cat.posY += vy;
-    blocks.forEach(block => {
-        if( collide(cat, block) ){
-            cat.posY = vy < 0 ? block.posY + block.h : block.posY - cat.h;
-            collisionCallback(block, cat);
+    for(let i = 0; i < collisionObjects.length; i++){
+        for(let k = 0; k < collisionObjects[i].length; k++){
+            const tile = collisionObjects[i][k];
+            if( collide(cat, tile) ){
+                cat.posY = vy < 0 ? tile.y + tile.h : tile.y - cat.h;
+                collisionCallback(tile, cat);
+            }
         }
-    });
+    }
 }
 
-export function collisionX(vx: number, cat: cat, blocks: collisionBlock[], collisionCallback: callback){
+export function collisionX(vx: number, cat: cat, collisionObjects: any, collisionCallback: callback){
     cat.posX += vx;
-    blocks.forEach(block => {
-        if( collide(cat, block) ){
-            cat.posX = vx < 0 ? block.posX + block.w : block.posX - cat.w;
-            collisionCallback(block, cat);
+    for(let i = 0; i < collisionObjects.length; i++){
+        for(let k = 0; k < collisionObjects[i].length; k++){
+            const tile = collisionObjects[i][k];
+            if( collide(cat, tile) ){
+                cat.posX = vx < 0 ? tile.x + tile.w : tile.x - cat.w;
+                collisionCallback(tile, cat);
+            }
         }
-    });
+    }
 }
 
-function collide(cat: cat, block: collisionBlock): boolean{
+function collide(cat: cat, tile: any): boolean{
+    
     return(
-        cat.posX < block.posX + block.w &&
-        cat.posX + cat.w > block.posX &&
-        cat.posY < block.posY + block.h &&
-        cat.posY + cat.h > block.posY
+        cat.posX < tile.x + tile.w &&
+        cat.posX + cat.w > tile.x &&
+        cat.posY < tile.y + tile.h &&
+        cat.posY + cat.h > tile.y
     );
 }

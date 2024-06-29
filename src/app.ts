@@ -1,7 +1,7 @@
 import { collisionX, collisionY } from "./lib/collision";
 import { cat, Murri, moveCat, drawCat } from "./lib/cat"
-import { collisionBlock, collisionBlocks, drawBlocks } from "./lib/blocks";
-import { createBlocks } from "./lib/blocks";
+import { collisionBlock, drawBlocks, newBlock } from "./lib/blocks/block/blocks";
+import { drawGoals, newGoal } from "./lib/blocks/goal/goals";
 
 const canvas = <HTMLCanvasElement> document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -22,11 +22,15 @@ export const camera: {x: number, y: number} = {
 export type callback = (block: collisionBlock, cat: cat) => void;
 
 function init(){
+    newBlock(0, 29*blockSize, 40*blockSize, blockSize);
+    newGoal(35*blockSize, 28*blockSize, blockSize, blockSize)
+
     if(ctx){ ctx.imageSmoothingEnabled = false; }
-    createBlocks(canvas);
+    //createBlocks(canvas);
     moveCat();
     drawCat(ctx);
     drawBlocks(ctx, camera);
+    drawGoals(ctx, camera);
 }
 init();
 
@@ -40,5 +44,6 @@ setInterval((): void=>{
         moveCat();
         drawCat(ctx);
         drawBlocks(ctx, camera);
+        drawGoals(ctx, camera);
     }
 }, 1000/60);

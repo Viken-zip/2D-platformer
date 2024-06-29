@@ -1,3 +1,5 @@
+import { blockSize } from "../app";
+
 export let collisionBlocks: collisionBlock[] = [];
 
 export class collisionBlock { 
@@ -19,6 +21,7 @@ export class collisionBlock {
 export function createBlocks(canvas: HTMLCanvasElement): void{
     newBlock(canvas.height - 10, 0, canvas.width, 10);
     newBlock(0, -10, 10, canvas.height);
+    newBlock(29*blockSize, 10*blockSize, blockSize, blockSize);
     //new collisionBlock(0, canvas.width, 10, canvas.height)
     
 }

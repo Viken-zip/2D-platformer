@@ -2,10 +2,11 @@ import { keys, keyStates } from "./keys"
 import { collisionBlock, collisionBlocks } from "./blocks";
 import { collisionX, collisionY } from "./collision";
 import { MurriSprite, getImage, updateAnimation } from "./animation";
-import { camera } from "../app";
+import { blockSize, camera } from "../app";
 
 /** @type {CanvasRenderingContext2D} */
 
+export const catSize: number = innerHeight/30;
 export class cat {
     posX: number;
     posY: number; 
@@ -32,7 +33,7 @@ let onGround: boolean = false;
 let vy: number = 0;
 let vx: number = 0;
 
-export const Murri: cat = new cat(50, 50, 100, 100, 1);
+export const Murri: cat = new cat(50, 50, catSize, catSize, 1);
 
 export function drawCat(ctx: any): void{
     const Values = getImage();

@@ -13,7 +13,7 @@ canvas.width = canvasContainerDiv.offsetWidth;
 canvas.height = canvasContainerDiv.offsetHeight;
 
 const maxCamX: number = 1000;
-const blockSize: number = 25;
+export const blockSize: number = innerHeight/30;
 export const camera: {x: number, y: number} = {
     x: 0,
     y: 0

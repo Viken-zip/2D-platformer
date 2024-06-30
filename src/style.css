@@ -20,10 +20,67 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#selectLevelBtn{
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border: solid 2px grey;
+    border-radius: 0.25rem;
+}
+#selectLevelBtn:hover{
+    cursor: pointer;
+    background-color: rgb(220, 220, 220);
+}
+#levelMenu{
+    background-color: whitesmoke;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.25rem;
 }
 #canvas{
     background-color: white;
     overflow: hidden;
+}
+
+.level{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(230, 230, 230);
+    border: solid grey 2px;
+    border-radius: 0.25rem;
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+}
+.levelImg{
+    margin: 10px auto;
+    background-color: aqua;
+    height: 50%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.levelPlayBtn{
+    margin: 5px auto;
+    margin-left: 10px;
+    padding: 2px 10px;
+}
+.levelMadeBy{
+    margin: auto auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    bottom: 0;
+}
+.levelDescription{
+    margin: 10px;
 }

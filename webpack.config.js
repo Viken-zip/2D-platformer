@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // Output directory
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'], // Resolve TypeScript and JavaScript files
+    extensions: ['.ts', '.tsx', '.js', '.json'], // Resolve TypeScript and JavaScript files
   },
   module: {
     rules: [
@@ -15,7 +15,7 @@ module.exports = {
         test: /\.ts?$/, // Match TypeScript files
         use: 'ts-loader', // Use ts-loader for TypeScript compilation
         exclude: /node_modules/,
-      },
+      }
     ],
   },
 };

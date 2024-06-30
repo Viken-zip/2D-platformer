@@ -2,7 +2,7 @@ import { keys, keyStates } from "./keys"
 import { collisionBlock, blocks } from "./blocks/block/blocks";
 import { collisionX, collisionY } from "./collision";
 import { MurriSprite, getImage, updateAnimation } from "./animation";
-import { blockSize, camera } from "../app";
+import { blockSize, camera, endCurrentLevel } from "../app";
 import { goals } from "./blocks/goal/goals";
 
 /** @type {CanvasRenderingContext2D} */
@@ -52,6 +52,8 @@ export function drawCat(ctx: any): void{
         Murri.w,
         Murri.h
     );
+
+    console.log(Murri);
 }
 
 export function moveCat(): void{
@@ -97,6 +99,7 @@ function collisiony(tile: any, cat: cat): void{
 
     if(tile.type == 'goal'){
         console.log('goal');
+        endCurrentLevel();
     }
 }
 
@@ -104,6 +107,7 @@ function collisionx(tile: any, cat: cat): void {
     vx = 0;
 
     if(tile.type == 'goal'){
-        console.log('goal')
+        console.log('goal');
+        endCurrentLevel();
     }
 }

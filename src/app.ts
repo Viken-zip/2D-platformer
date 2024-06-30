@@ -1,16 +1,21 @@
 import { collisionX, collisionY } from "./lib/collision";
 import { cat, Murri, moveCat, drawCat } from "./lib/cat"
-import { collisionBlock, drawBlocks, newBlock } from "./lib/blocks/block/blocks";
-import { drawGoals, newGoal } from "./lib/blocks/goal/goals";
+import { clearBlocks, collisionBlock, drawBlocks, newBlock } from "./lib/blocks/block/blocks";
+import { clearGoals, drawGoals, newGoal } from "./lib/blocks/goal/goals";
+import "./lib/menu";
+import { buildLevel } from "./lib/levelBuilder";
+import { openLevelMenu } from "./lib/menu";
 
 const canvas = <HTMLCanvasElement> document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+if(ctx){ ctx.imageSmoothingEnabled = false; }
 
 let gameOn: boolean = true;
 
 const canvasContainerDiv = <HTMLDivElement> document.getElementById('canvasContainer');
 canvas.width = canvasContainerDiv.offsetWidth;
 canvas.height = canvasContainerDiv.offsetHeight;
+canvas.style.display = 'none';
 
 const maxCamX: number = 1000;
 export const blockSize: number = innerHeight/30;
@@ -32,9 +37,10 @@ function init(){
     drawBlocks(ctx, camera);
     drawGoals(ctx, camera);
 }
-init();
+//init();
 
-setInterval((): void=>{
+
+function gameLoop(){
     if(gameOn){
         
         camera.x = Math.max(0, Murri.posX - canvas.width/2);
@@ -46,4 +52,19 @@ setInterval((): void=>{
         drawBlocks(ctx, camera);
         drawGoals(ctx, camera);
     }
-}, 1000/60);
+};
+
+let gameInterval: any;
+export function startLevel(level: any): void {
+    buildLevel(level);
+    canvas.style.display = 'block';
+    gameInterval = setInterval(gameLoop, 1000/60);
+}
+
+export function endCurrentLevel(): void {
+    canvas.style.display = 'none';
+    clearGoals();
+    clearBlocks();
+    clearInterval(gameInterval);
+    openLevelMenu();
+}

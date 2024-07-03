@@ -1,6 +1,7 @@
 export const MurriSprite = new Image();
 MurriSprite.src = './sprites/big_murri_sprite.png';
 
+
 const sizePerFrame: number = 100;
 
 let row: number = 0;

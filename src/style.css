@@ -23,17 +23,19 @@
     background-color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#selectLevelBtn{
+.menuBtn{
     padding: 10px 20px;
     font-size: 1.5rem;
     font-weight: 900;
     border: solid 2px grey;
     border-radius: 0.25rem;
+    margin: 5px;
 }
-#selectLevelBtn:hover{
+.menuBtn:hover{
     cursor: pointer;
     background-color: rgb(220, 220, 220);
 }

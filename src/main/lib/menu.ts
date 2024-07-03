@@ -21,6 +21,11 @@ selectLevelBtn?.addEventListener('click', ()=>{
     }
 });
 
+const editorLevelBtn = <HTMLButtonElement>document.getElementById('editorLevelBtn');
+editorLevelBtn?.addEventListener('click', ()=>{
+    window.location.href = 'levelEditor.html';
+})
+
 const levelMenu = <HTMLDivElement>document.getElementById('levelMenu');
 export function openLevelMenu(): void {
     selectLevelBtn.style.display = 'none';

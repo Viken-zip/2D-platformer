@@ -7,10 +7,10 @@
       "resolveJsonModule": true
     },
     "include": [
-      "src/app.ts",
-      "src/lib/**/*.ts"
+      "src/main/app.ts",
+      "src/main/lib/**/*.ts"
     ],
     "exclude": [
       "node_modules"
     ]
-  }
+}

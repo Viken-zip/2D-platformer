@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/main/app.ts', // Entry point of your application
+  entry: { main: './src/main/app.ts', editor: './src/editor/editorApp.ts'}, // Entry point of your application
   output: {
-    filename: 'bundle.js', // Output bundle file
+    filename: '[name].js', // Output bundle file
     path: path.resolve(__dirname, 'dist'), // Output directory
   },
   resolve: {

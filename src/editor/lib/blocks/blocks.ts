@@ -65,7 +65,6 @@ export function drawBlock(ctx: any, x: number, y: number, type: blockType): void
 
 function blockExist(x: number, y: number){
     for(let i = 0; i < blocks.length; i++){
-        console.log(i);
         if ( blocks[i].x == x && blocks[i].y == y ){
             console.log('match!')
             return { taken: true, takenBlock: blocks[i] }

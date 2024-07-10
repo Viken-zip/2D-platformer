@@ -22,12 +22,6 @@ export function clearBlocks(): void {
     blocks.splice(0, blocks.length);
 }
 
-/*export function createBlocks(canvas: HTMLCanvasElement): void{
-    newBlock(0, 29*blockSize, 40*blockSize, blockSize);
-    //new collisionBlock(0, canvas.width, 10, canvas.height)
-    
-}*/
-
 export function newBlock(x: number, y: number, w: number, h: number): void{
     const newBlock = new collisionBlock(x, y, w, h, 'block');
     blocks.push(newBlock);

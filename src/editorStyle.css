@@ -2,12 +2,19 @@
     margin: 0;
     overflow-y: hidden;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 .container{
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+}
+#topBar{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border: solid 2px grey;
 }
 #canvasContainer{
     width: 100%;

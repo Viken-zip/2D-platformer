@@ -1,5 +1,7 @@
 //this isnt a block so to say, its just for showing blank space
 
+import { tileSize } from "../../editorApp";
+
 const gridSprite = new Image();
 gridSprite.src = './sprites/grid.png';
 
@@ -18,4 +20,15 @@ export function drawGrid(ctx: any, tileSize: number, width: number, height: numb
             }
         }
     }
+}
+
+export function redrawGird(ctx: any, x: number, y: number): void{
+    ctx?.clearRect(x*tileSize, y*tileSize, tileSize, tileSize);
+    ctx.drawImage(
+        gridSprite,
+        x * tileSize,
+        y * tileSize,
+        tileSize,
+        tileSize
+    );
 }

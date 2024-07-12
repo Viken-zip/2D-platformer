@@ -1,5 +1,6 @@
 import { canvas, tileSize } from "../editorApp";
 import { newBlock } from "./blocks/blocks";
+import { cursorClick } from "./blockSelection";
 
 export class Cursor{
     x: number;
@@ -15,7 +16,7 @@ export let cursor: Cursor = new Cursor(0, 0);
 
 export function initCursor(canvas: HTMLCanvasElement, ctx: any): void{
     canvas.addEventListener('mousedown', ()=>{
-        newBlock(ctx, cursor.x, cursor.y, "brick");
+        cursorClick(ctx, cursor.x, cursor.y);
     });
 
     canvas.addEventListener('mousemove', (e)=>{

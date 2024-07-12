@@ -36,3 +36,8 @@
     background-color: white;
     overflow: hidden;
 }
+
+.selectedTool{
+    border: solid 2px black;
+    border-radius: 0.25rem;
+}

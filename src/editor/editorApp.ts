@@ -1,4 +1,5 @@
 import { drawGrid } from "./lib/blocks/grids";
+import { initBlockSelection } from "./lib/blockSelection";
 import './lib/cursor';
 import { initCursor } from "./lib/cursor";
 
@@ -16,6 +17,7 @@ canvas.height = tileSize*30;
 function init(): void{
     initCursor(canvas, ctx);
     drawGrid(ctx, tileSize, 1000, 30);
+    initBlockSelection();
 }
 init();
 

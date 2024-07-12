@@ -1,9 +1,10 @@
 import { tileSize } from "../../editorApp";
 
-export type blockType = "brick"
+export type blockType = "brick" | "white_brick";
 
-const brickSprite = new Image();
-brickSprite.src = './sprites/brick.png';
+/*const brickSprite = new Image();
+brickSprite.src = './sprites/brick.png';*/
+
 
 let blocks: Block[] = [];
 class Block {

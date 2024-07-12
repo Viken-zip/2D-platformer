@@ -15,9 +15,16 @@
             <button class="topBarButton" id="eraserBtn" >
                 <img src="./icons/eraser.svg" alt="return icon">
             </button>
-            <button class="topBarButton selectedTool" id="penBtn" >
-                <img src="./icons/pen.svg" alt="return icon">
-            </button>
+            <div class="blockSelectionContainer" >
+                <div class="blockSelection" >
+                    <button id="changeBlockLeft" >&lt;</button>
+                    <img id="selectedBlock" src="./sprites/brick.png" alt="brick">
+                    <button id="changeBlockRight" >&gt;</button>
+                </div>
+                <button class="selectedTool" id="penBtn" >
+                    <img src="./icons/pen.svg" alt="return icon">
+                </button>
+            </div>
         </div>
         <div id="canvasContainer" >
             <canvas id="canvas" />

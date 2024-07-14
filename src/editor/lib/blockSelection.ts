@@ -3,7 +3,7 @@ import { redrawGird } from "./blocks/grids";
 
 type buildTools = "eraser" | "blockPlacer";
 
-const blocksTypes: blockType[] = ['brick', 'white_brick'];
+const blocksTypes: blockType[] = ['brick', 'white_brick', 'goal_flag', 'spawn'];
 
 export let selectedBlock: blockType = 'brick';
 export let selectedTool: buildTools = 'blockPlacer';

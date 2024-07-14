@@ -1,24 +1,27 @@
 import { tileSize } from "../../editorApp";
+import { redrawGird } from "./grids";
 
-export type blockType = "brick" | "white_brick";
+export type blockType = "brick" | "white_brick" | "goal_flag" | "spawn";
+export const oneBlocks: blockType[] = ['goal_flag', 'spawn'];
 
 /*const brickSprite = new Image();
 brickSprite.src = './sprites/brick.png';*/
 
+export interface BlockInterface {
+    x: number,
+    y: number,
+    type: blockType
+}
 
-let blocks: Block[] = [];
+export let blocks: Block[] = [];
 class Block {
     x: number;
     y: number;
-    w: number;
-    h: number;
     type: blockType;
 
     constructor(x: number, y: number, w: number, h: number, type: blockType){
         this.x = x;
         this.y = y;
-        this.w = w;
-        this.h = h;
         this.type = type;
     }
 }
@@ -26,24 +29,35 @@ class Block {
 export function removeBlock(x: number, y: number): void{
     for(let i = 0; i < blocks.length; i++){
         if ( blocks[i].x == x && blocks[i].y == y ){
-            blocks.splice(i, 1)
+            blocks.splice(i, 1);
+        }
+    }
+}
+
+function removeDoubleBlock(ctx: any, blockType: blockType): void{
+    for(let i = 0; i < blocks.length; i++){
+        if(blocks[i].type == blockType){
+            redrawGird(ctx, blocks[i].x, blocks[i].y);
+            blocks.splice(i, 1);
         }
     }
 }
 
 export function newBlock(ctx: any, x: number, y: number, type: blockType): void{
-    const newBlock = new Block(x, y, 1, 1, type);
+    
+
+    if( oneBlocks.includes(type) ) removeDoubleBlock(ctx, type);
 
     const taken = blockExist(x, y);
     if(!taken.taken){
         console.log('non att all')
-        blocks.push(newBlock);
+        blocks.push( new Block(x, y, 1, 1, type) );
         drawBlock(ctx, x, y, type);
     } else if ( taken.taken && !(taken.takenBlock?.type == type) ){
         console.log('replace')
         removeBlock(x, y);
 
-        blocks.push(newBlock);
+        blocks.push( new Block(x, y, 1, 1, type) );
         drawBlock(ctx, x, y, type);
     }
 

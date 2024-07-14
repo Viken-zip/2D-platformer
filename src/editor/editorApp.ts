@@ -2,6 +2,7 @@ import { drawGrid } from "./lib/blocks/grids";
 import { initBlockSelection } from "./lib/blockSelection";
 import './lib/cursor';
 import { initCursor } from "./lib/cursor";
+import { initJsonMenu } from "./lib/jsonMenu";
 
 export const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -15,6 +16,7 @@ canvas.width = tileSize*1000;
 canvas.height = tileSize*30;
 
 function init(): void{
+    initJsonMenu();
     initCursor(canvas, ctx);
     drawGrid(ctx, tileSize, 1000, 30);
     initBlockSelection();

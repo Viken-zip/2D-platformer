@@ -46,7 +46,6 @@ export function initBlockSelection(): void{
 
 export function cursorClick(ctx: any, x: number, y: number): void{
     if(selectedTool == 'blockPlacer'){
-
         newBlock(ctx, x, y, selectedBlock);
     } else if ( selectedTool == 'eraser' ){
         removeBlock(x, y);

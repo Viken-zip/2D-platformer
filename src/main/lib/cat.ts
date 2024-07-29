@@ -7,7 +7,7 @@ import { goals } from "./blocks/goal/goals";
 
 /** @type {CanvasRenderingContext2D} */
 
-export const catSize: number = innerHeight/30;
+export const catSize: number = innerHeight/32;
 const objects = [blocks, goals];
 
 export class cat {
@@ -37,7 +37,9 @@ let onGround: boolean = false;
 let vy: number = 0;
 let vx: number = 0;
 
-export const Murri: cat = new cat(innerHeight/1.25, 50, catSize, catSize, 1);
+let murriStartPoint = {x: 0, y: 0};
+
+export const Murri: cat = new cat(600, 700, catSize, catSize, 1);
 
 export function drawCat(ctx: any): void{
     const Values = getImage();
@@ -53,10 +55,10 @@ export function drawCat(ctx: any): void{
         Murri.h
     );
 
-    console.log(Murri);
+    //console.log(Murri);
 }
 
-export function moveCat(): void{
+export function moveCat(canvas: any): void{
     if( keyStates['d'] ){ if(vx < maxSpeed){vx += Murri.speed / 6} }
     else{
         vx = vx > 0.01 ? vx / 1.2 : vx;
@@ -89,6 +91,21 @@ export function moveCat(): void{
 
     //console.log(vx);
     updateAnimation(vx, vy);
+
+
+    if(Murri.posY+catSize > canvas.height ||
+        Murri.posX+catSize > canvas.width ||
+        Murri.posX < 0
+    ){
+        //put murri on level start point
+        Murri.posX = murriStartPoint.x;
+        Murri.posY = murriStartPoint.y;
+    }
+}
+
+export function setStartPoint(x: number, y: number){
+    murriStartPoint.x = x;
+    murriStartPoint.y = y;
 }
 
 function collisiony(tile: any, cat: cat): void{

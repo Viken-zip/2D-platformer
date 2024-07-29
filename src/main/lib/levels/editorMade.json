@@ -1,0 +1,116 @@
+{
+  "madeBy": "none",
+  "description": "none",
+  "levelBuild": {
+    "startPoint": {
+      "x": 3,
+      "y": 28
+    },
+    "goal": {
+      "x": 4,
+      "y": 23
+    },
+    "blocks": [
+      {
+        "x": 0,
+        "y": 28,
+        "type": "brick"
+      },
+      {
+        "x": 0,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 1,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 2,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 3,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 4,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 5,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 6,
+        "y": 29,
+        "type": "brick"
+      },
+      {
+        "x": 0,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 0,
+        "y": 26,
+        "type": "brick"
+      },
+      {
+        "x": 0,
+        "y": 25,
+        "type": "brick"
+      },
+      {
+        "x": 8,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 9,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 11,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 12,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 10,
+        "y": 27,
+        "type": "brick"
+      },
+      {
+        "x": 6,
+        "y": 24,
+        "type": "white_brick"
+      },
+      {
+        "x": 5,
+        "y": 24,
+        "type": "white_brick"
+      },
+      {
+        "x": 4,
+        "y": 24,
+        "type": "white_brick"
+      },
+      {
+        "x": 3,
+        "y": 24,
+        "type": "white_brick"
+      }
+    ]
+  }
+}

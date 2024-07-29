@@ -1,6 +1,7 @@
 import { drawGrid } from "./lib/blocks/grids";
 import { initBlockSelection } from "./lib/blockSelection";
 import './lib/cursor';
+import './lib/menu';
 import { initCursor } from "./lib/cursor";
 import { initJsonMenu } from "./lib/jsonMenu";
 

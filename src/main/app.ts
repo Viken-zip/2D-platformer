@@ -1,6 +1,6 @@
 import { collisionX, collisionY } from "./lib/collision";
 import { cat, Murri, moveCat, drawCat } from "./lib/cat"
-import { clearBlocks, collisionBlock, drawBlocks, newBlock } from "./lib/blocks/block/blocks";
+import { clearBlocks, collisionBlock, drawBlocks, initBlocks, newBlock } from "./lib/blocks/block/blocks";
 import { clearGoals, drawGoals, newGoal } from "./lib/blocks/goal/goals";
 import "./lib/menu";
 import { buildLevel } from "./lib/levelBuilder";
@@ -27,19 +27,19 @@ export const camera: {x: number, y: number} = {
 export type callback = (block: collisionBlock, cat: cat) => void;
 
 function init(){
-    newBlock(0, 29*blockSize, 40*blockSize, blockSize);
+    newBlock(0, 29*blockSize, 40*blockSize, blockSize, 'brick');
     newGoal(35*blockSize, 28*blockSize, blockSize, blockSize)
 
     if(ctx){ ctx.imageSmoothingEnabled = false; }
     //createBlocks(canvas);
-    moveCat();
+    moveCat(canvas);
     drawCat(ctx);
     drawBlocks(ctx, camera);
     drawGoals(ctx, camera);
 }
 //init();
 
-
+initBlocks(); 
 function gameLoop(){
     if(gameOn){
         
@@ -47,7 +47,7 @@ function gameLoop(){
         camera.x = Math.min(camera.x, maxCamX * blockSize + blockSize - canvas.width);
 
         ctx?.clearRect(0, 0, canvas.width, canvas.height);
-        moveCat();
+        moveCat(canvas);
         drawCat(ctx);
         drawBlocks(ctx, camera);
         drawGoals(ctx, camera);

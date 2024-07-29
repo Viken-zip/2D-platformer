@@ -3,7 +3,8 @@ import { startLevel } from '../app';
 const defaultLevels: string[] = [
     'level1',
     'level2',
-    'level3'
+    'level3',
+    //'editorMade' //only fore testing new things
 ];
 
 const levels: any = [];
@@ -48,21 +49,11 @@ function initShowLevels(): void{
 
         const playBtn = levelElement.querySelector('.levelPlayBtn');
         playBtn?.addEventListener('click', ()=>{
-            //console.log('play ' + levels[level].description);
             console.log('starts level: ' + levels[level].description);
             gameCover.style.display = 'none';
             startLevel(levels[level]);
         });
 
         levelMenu.appendChild(levelElement);
-
-        /*levelMenu.innerHTML += `
-            <div class="debugLevel" >
-                <span class="debugImg" >image</span>
-                <button class="playBtn" >play</button>
-                <span class="debugLevelDescription" >${levels[level].description}</span>
-                <span class="debugMadeBy" >level made by ${levels[level].madeBy} </span>
-            </div>
-            `;*/
     }
 }

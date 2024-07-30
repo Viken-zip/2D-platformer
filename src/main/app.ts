@@ -1,7 +1,7 @@
 import { collisionX, collisionY } from "./lib/collision";
 import { cat, Murri, moveCat, drawCat } from "./lib/cat"
 import { clearBlocks, collisionBlock, drawBlocks, initBlocks, newBlock } from "./lib/blocks/block/blocks";
-import { clearGoals, drawGoals, newGoal } from "./lib/blocks/goal/goals";
+import { clearGoals, drawGoals, initGoal, newGoal } from "./lib/blocks/goal/goals";
 import "./lib/menu";
 import { buildLevel } from "./lib/levelBuilder";
 import { openLevelMenu } from "./lib/menu";
@@ -39,6 +39,7 @@ function init(){
 }
 //init();
 
+initGoal();
 initBlocks(); 
 function gameLoop(){
     if(gameOn){
